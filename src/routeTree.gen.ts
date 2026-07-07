@@ -13,6 +13,7 @@ import { Route as StudentsRouteImport } from './routes/students'
 import { Route as PredictRouteImport } from './routes/predict'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AddStudentRouteImport } from './routes/add-student'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -36,6 +37,11 @@ const DashboardRoute = DashboardRouteImport.update({
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnalyticsRoute = AnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AddStudentRoute = AddStudentRouteImport.update({
   id: '/add-student',
   path: '/add-student',
@@ -50,6 +56,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/add-student': typeof AddStudentRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/predict': typeof PredictRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/add-student': typeof AddStudentRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/predict': typeof PredictRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/add-student': typeof AddStudentRoute
+  '/analytics': typeof AnalyticsRoute
   '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
   '/predict': typeof PredictRoute
@@ -77,16 +86,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/add-student'
+    | '/analytics'
     | '/dashboard'
     | '/login'
     | '/predict'
     | '/students'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/add-student' | '/dashboard' | '/login' | '/predict' | '/students'
+  to:
+    | '/'
+    | '/add-student'
+    | '/analytics'
+    | '/dashboard'
+    | '/login'
+    | '/predict'
+    | '/students'
   id:
     | '__root__'
     | '/'
     | '/add-student'
+    | '/analytics'
     | '/dashboard'
     | '/login'
     | '/predict'
@@ -96,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AddStudentRoute: typeof AddStudentRoute
+  AnalyticsRoute: typeof AnalyticsRoute
   DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
   PredictRoute: typeof PredictRoute
@@ -132,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/analytics': {
+      id: '/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/add-student': {
       id: '/add-student'
       path: '/add-student'
@@ -152,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AddStudentRoute: AddStudentRoute,
+  AnalyticsRoute: AnalyticsRoute,
   DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
   PredictRoute: PredictRoute,
