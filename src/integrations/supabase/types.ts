@@ -14,7 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      students: {
+        Row: {
+          assignment_marks: number
+          attendance: number
+          created_at: string
+          department: string
+          id: string
+          internal_marks: number
+          name: string
+          semester: string
+          updated_at: string
+          user_id: string
+          usn: string
+        }
+        Insert: {
+          assignment_marks?: number
+          attendance?: number
+          created_at?: string
+          department?: string
+          id?: string
+          internal_marks?: number
+          name: string
+          semester?: string
+          updated_at?: string
+          user_id: string
+          usn: string
+        }
+        Update: {
+          assignment_marks?: number
+          attendance?: number
+          created_at?: string
+          department?: string
+          id?: string
+          internal_marks?: number
+          name?: string
+          semester?: string
+          updated_at?: string
+          user_id?: string
+          usn?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
