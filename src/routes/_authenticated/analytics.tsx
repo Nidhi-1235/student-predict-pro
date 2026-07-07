@@ -14,7 +14,7 @@ import {
 import { MobileShell } from "@/components/MobileShell";
 import { predict, useStudents } from "@/lib/store";
 
-export const Route = createFileRoute("/analytics")({
+export const Route = createFileRoute("/_authenticated/analytics")({
   head: () => ({ meta: [{ title: "Analytics — SPPS" }] }),
   component: AnalyticsPage,
 });

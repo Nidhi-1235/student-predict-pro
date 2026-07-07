@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { MobileShell } from "@/components/MobileShell";
-import { addStudent } from "@/lib/store";
+import { useAddStudent } from "@/lib/store";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/add-student")({
+export const Route = createFileRoute("/_authenticated/add-student")({
   head: () => ({ meta: [{ title: "Add Student — SPPS" }] }),
   component: AddStudent,
 });
@@ -26,28 +26,33 @@ const empty = {
 function AddStudent() {
   const nav = useNavigate();
   const [form, setForm] = useState(empty);
+  const addMut = useAddStudent();
 
   function set<K extends keyof typeof form>(k: K, v: string) {
     setForm((f) => ({ ...f, [k]: v }));
   }
 
-  function save(e: React.FormEvent) {
+  async function save(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name || !form.usn) {
       toast.error("Name and USN are required");
       return;
     }
-    addStudent({
-      name: form.name.trim(),
-      usn: form.usn.trim().toUpperCase(),
-      department: form.department.trim(),
-      semester: form.semester.trim(),
-      attendance: Number(form.attendance) || 0,
-      internal: Number(form.internal) || 0,
-      assignment: Number(form.assignment) || 0,
-    });
-    toast.success("Student saved");
-    nav({ to: "/students" });
+    try {
+      await addMut.mutateAsync({
+        name: form.name.trim(),
+        usn: form.usn.trim().toUpperCase(),
+        department: form.department.trim(),
+        semester: form.semester.trim(),
+        attendance: Number(form.attendance) || 0,
+        internal: Number(form.internal) || 0,
+        assignment: Number(form.assignment) || 0,
+      });
+      toast.success("Student saved");
+      nav({ to: "/students" });
+    } catch {
+      // toast handled in mutation
+    }
   }
 
   return (

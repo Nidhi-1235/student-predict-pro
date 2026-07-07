@@ -8,7 +8,7 @@ import { MobileShell } from "@/components/MobileShell";
 import { predict } from "@/lib/store";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/predict")({
+export const Route = createFileRoute("/_authenticated/predict")({
   head: () => ({ meta: [{ title: "Predict — SPPS" }] }),
   component: PredictPage,
 });

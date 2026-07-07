@@ -1,19 +1,26 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { GraduationCap } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/")({
+  ssr: false,
   component: Splash,
 });
 
 function Splash() {
   const navigate = useNavigate();
   useEffect(() => {
-    const t = setTimeout(() => {
-      const authed = typeof window !== "undefined" && localStorage.getItem("spps.auth");
-      navigate({ to: authed ? "/dashboard" : "/login" });
-    }, 1600);
-    return () => clearTimeout(t);
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      if (cancelled) return;
+      const { data } = await supabase.auth.getSession();
+      navigate({ to: data.session ? "/dashboard" : "/login" });
+    }, 1400);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
   }, [navigate]);
 
   return (
