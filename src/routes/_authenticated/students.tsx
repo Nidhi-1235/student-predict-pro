@@ -4,7 +4,7 @@ import { ArrowLeft, Search, SlidersHorizontal, Trash2, Pencil, Plus } from "luci
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { MobileShell } from "@/components/MobileShell";
-import { deleteStudent, predict, useStudents } from "@/lib/store";
+import { predict, useDeleteStudent, useStudents } from "@/lib/store";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +18,7 @@ type Filter = "all" | "pass" | "fail";
 function StudentsPage() {
   const nav = useNavigate();
   const students = useStudents();
+  const del = useDeleteStudent();
   const [q, setQ] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
 
@@ -151,8 +152,9 @@ function StudentsPage() {
                   variant="outline"
                   className="h-9 flex-1 rounded-xl border-destructive/30 text-destructive hover:bg-destructive/10"
                   onClick={() => {
-                    deleteStudent(s.id);
-                    toast.success("Deleted");
+                    del.mutate(s.id, {
+                      onSuccess: () => toast.success("Deleted"),
+                    });
                   }}
                 >
                   <Trash2 size={14} /> Delete
