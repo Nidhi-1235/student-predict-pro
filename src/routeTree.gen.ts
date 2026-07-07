@@ -9,48 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StudentsRouteImport } from './routes/students'
-import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as PredictRouteImport } from './routes/predict'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as DashboardRouteImport } from './routes/dashboard'
-import { Route as AnalyticsRouteImport } from './routes/analytics'
-import { Route as AddStudentRouteImport } from './routes/add-student'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedStudentsRouteImport } from './routes/_authenticated/students'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedPredictRouteImport } from './routes/_authenticated/predict'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
+import { Route as AuthenticatedAddStudentRouteImport } from './routes/_authenticated/add-student'
 
-const StudentsRoute = StudentsRouteImport.update({
-  id: '/students',
-  path: '/students',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PredictRoute = PredictRouteImport.update({
-  id: '/predict',
-  path: '/predict',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardRoute = DashboardRouteImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AnalyticsRoute = AnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AddStudentRoute = AddStudentRouteImport.update({
-  id: '/add-student',
-  path: '/add-student',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -58,131 +28,119 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedStudentsRoute = AuthenticatedStudentsRouteImport.update({
+  id: '/_authenticated/students',
+  path: '/students',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/_authenticated/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedPredictRoute = AuthenticatedPredictRouteImport.update({
+  id: '/_authenticated/predict',
+  path: '/predict',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/_authenticated/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({
+  id: '/_authenticated/analytics',
+  path: '/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAddStudentRoute = AuthenticatedAddStudentRouteImport.update({
+  id: '/_authenticated/add-student',
+  path: '/add-student',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/add-student': typeof AddStudentRoute
-  '/analytics': typeof AnalyticsRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
-  '/predict': typeof PredictRoute
-  '/profile': typeof ProfileRoute
-  '/students': typeof StudentsRoute
+  '/add-student': typeof AuthenticatedAddStudentRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/predict': typeof AuthenticatedPredictRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/students': typeof AuthenticatedStudentsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/add-student': typeof AddStudentRoute
-  '/analytics': typeof AnalyticsRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
-  '/predict': typeof PredictRoute
-  '/profile': typeof ProfileRoute
-  '/students': typeof StudentsRoute
+  '/add-student': typeof AuthenticatedAddStudentRoute
+  '/analytics': typeof AuthenticatedAnalyticsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/predict': typeof AuthenticatedPredictRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/students': typeof AuthenticatedStudentsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/add-student': typeof AddStudentRoute
-  '/analytics': typeof AnalyticsRoute
-  '/dashboard': typeof DashboardRoute
   '/login': typeof LoginRoute
-  '/predict': typeof PredictRoute
-  '/profile': typeof ProfileRoute
-  '/students': typeof StudentsRoute
+  '/_authenticated/add-student': typeof AuthenticatedAddStudentRoute
+  '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/predict': typeof AuthenticatedPredictRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/students': typeof AuthenticatedStudentsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/login'
     | '/add-student'
     | '/analytics'
     | '/dashboard'
-    | '/login'
     | '/predict'
     | '/profile'
     | '/students'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/login'
     | '/add-student'
     | '/analytics'
     | '/dashboard'
-    | '/login'
     | '/predict'
     | '/profile'
     | '/students'
   id:
     | '__root__'
     | '/'
-    | '/add-student'
-    | '/analytics'
-    | '/dashboard'
     | '/login'
-    | '/predict'
-    | '/profile'
-    | '/students'
+    | '/_authenticated/add-student'
+    | '/_authenticated/analytics'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/predict'
+    | '/_authenticated/profile'
+    | '/_authenticated/students'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AddStudentRoute: typeof AddStudentRoute
-  AnalyticsRoute: typeof AnalyticsRoute
-  DashboardRoute: typeof DashboardRoute
   LoginRoute: typeof LoginRoute
-  PredictRoute: typeof PredictRoute
-  ProfileRoute: typeof ProfileRoute
-  StudentsRoute: typeof StudentsRoute
+  AuthenticatedAddStudentRoute: typeof AuthenticatedAddStudentRoute
+  AuthenticatedAnalyticsRoute: typeof AuthenticatedAnalyticsRoute
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedPredictRoute: typeof AuthenticatedPredictRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedStudentsRoute: typeof AuthenticatedStudentsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/students': {
-      id: '/students'
-      path: '/students'
-      fullPath: '/students'
-      preLoaderRoute: typeof StudentsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/predict': {
-      id: '/predict'
-      path: '/predict'
-      fullPath: '/predict'
-      preLoaderRoute: typeof PredictRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard': {
-      id: '/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof DashboardRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/analytics': {
-      id: '/analytics'
-      path: '/analytics'
-      fullPath: '/analytics'
-      preLoaderRoute: typeof AnalyticsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/add-student': {
-      id: '/add-student'
-      path: '/add-student'
-      fullPath: '/add-student'
-      preLoaderRoute: typeof AddStudentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -192,18 +150,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/students': {
+      id: '/_authenticated/students'
+      path: '/students'
+      fullPath: '/students'
+      preLoaderRoute: typeof AuthenticatedStudentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/predict': {
+      id: '/_authenticated/predict'
+      path: '/predict'
+      fullPath: '/predict'
+      preLoaderRoute: typeof AuthenticatedPredictRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/analytics': {
+      id: '/_authenticated/analytics'
+      path: '/analytics'
+      fullPath: '/analytics'
+      preLoaderRoute: typeof AuthenticatedAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/add-student': {
+      id: '/_authenticated/add-student'
+      path: '/add-student'
+      fullPath: '/add-student'
+      preLoaderRoute: typeof AuthenticatedAddStudentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AddStudentRoute: AddStudentRoute,
-  AnalyticsRoute: AnalyticsRoute,
-  DashboardRoute: DashboardRoute,
   LoginRoute: LoginRoute,
-  PredictRoute: PredictRoute,
-  ProfileRoute: ProfileRoute,
-  StudentsRoute: StudentsRoute,
+  AuthenticatedAddStudentRoute: AuthenticatedAddStudentRoute,
+  AuthenticatedAnalyticsRoute: AuthenticatedAnalyticsRoute,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedPredictRoute: AuthenticatedPredictRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedStudentsRoute: AuthenticatedStudentsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

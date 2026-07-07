@@ -8,7 +8,7 @@ import { deleteStudent, predict, useStudents } from "@/lib/store";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
-export const Route = createFileRoute("/students")({
+export const Route = createFileRoute("/_authenticated/students")({
   head: () => ({ meta: [{ title: "Students — SPPS" }] }),
   component: StudentsPage,
 });

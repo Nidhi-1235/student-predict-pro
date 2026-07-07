@@ -4,7 +4,7 @@ import { MobileShell, PageHeader } from "@/components/MobileShell";
 import { logout } from "@/lib/store";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/profile")({
+export const Route = createFileRoute("/_authenticated/profile")({
   head: () => ({ meta: [{ title: "Profile — SPPS" }] }),
   component: ProfilePage,
 });

@@ -11,7 +11,7 @@ import {
 import { MobileShell, PageHeader } from "@/components/MobileShell";
 import { logout, useStudents } from "@/lib/store";
 
-export const Route = createFileRoute("/dashboard")({
+export const Route = createFileRoute("/_authenticated/dashboard")({
   head: () => ({
     meta: [
       { title: "Dashboard — Student Performance Prediction System" },

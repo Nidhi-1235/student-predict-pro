@@ -8,7 +8,7 @@ import { MobileShell } from "@/components/MobileShell";
 import { addStudent } from "@/lib/store";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/add-student")({
+export const Route = createFileRoute("/_authenticated/add-student")({
   head: () => ({ meta: [{ title: "Add Student — SPPS" }] }),
   component: AddStudent,
 });
