@@ -1,12 +1,13 @@
 import { type ReactNode } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, Users, LineChart, User } from "lucide-react";
+import { Home, Users, LineChart, User, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/dashboard", label: "Home", icon: Home },
   { to: "/students", label: "Students", icon: Users },
   { to: "/predict", label: "Prediction", icon: LineChart },
+  { to: "/covid-dashboard", label: "COVID", icon: Activity },
   { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
