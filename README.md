@@ -28,32 +28,6 @@ A simple web app to manage student records, predict academic outcomes, and visua
 - [Bun](https://bun.sh/)
 - Lovable Cloud project credentials (`.env` file)
 
-### Installation
-
-1. Clone the repository
-
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-   cd YOUR_REPO
-   ```
-
-2. Install dependencies
-
-   ```bash
-   bun install
-   ```
-
-3. Add environment variables
-
-   Create a `.env` file in the project root:
-
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
-   ```
-
-   > Keep `.env` private. It is already listed in `.gitignore`.
-
 ### Run Locally
 
 ```bash
@@ -101,37 +75,9 @@ Score = (Attendance × 0.35)
 | `bun lint` | Run ESLint |
 | `bun format` | Format code with Prettier |
 
-## Deployment
+## Author
 
-### Option 1: Lovable (Recommended)
-
-Connect your GitHub repo to Lovable. Changes pushed to GitHub will sync and deploy automatically.
-
-### Option 2: Self-Hosting
-
-Build the project and deploy the `dist/` folder to any static host.
-
-```bash
-bun build
-```
-
-Make sure the same Supabase environment variables are set on your hosting platform.
-
-## Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| `VITE_SUPABASE_URL` | Supabase project URL |
-| `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase public API key |
-
-## Contributing
-
-1. Fork the repository
-2. Create a branch: `git checkout -b feature/your-feature`
-3. Make your changes
-4. Commit: `git commit -m "Add your feature"`
-5. Push: `git push origin feature/your-feature`
-6. Open a Pull Request
+**Nidhi N**
 
 ## License
 
