@@ -86,7 +86,7 @@ function CovidDashboard() {
           <SummaryCard
             label="Total Cases"
             value={summary.cases}
-            icon={Virus}
+            icon={VirusIcon}
             tint="from-blue-500 to-sky-400"
             delta={summary.todayCases}
           />
