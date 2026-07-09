@@ -232,6 +232,35 @@ function CovidError({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+function VirusIcon({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 12c0-3 0-3 0-3" />
+      <path d="M12 12c2.5 0 2.5 0 2.5 0" />
+      <path d="M12 12c-2.5 0-2.5 0-2.5 0" />
+      <path d="M12 12c0 3 0 3 0 3" />
+      <circle cx="12" cy="12" r="3" />
+      <path d="M12 6V3" />
+      <path d="M12 21v-3" />
+      <path d="M6 12H3" />
+      <path d="M21 12h-3" />
+      <path d="M7.05 7.05 4.93 4.93" />
+      <path d="M19.07 19.07l-2.12-2.12" />
+      <path d="M7.05 16.95l-2.12 2.12" />
+      <path d="M19.07 4.93l-2.12 2.12" />
+    </svg>
+  );
+}
+
 function formatNumber(value: number): string {
   if (value === undefined || value === null) return "—";
   return new Intl.NumberFormat("en-US", {
