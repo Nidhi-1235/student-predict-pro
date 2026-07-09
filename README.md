@@ -82,7 +82,3 @@ Score = (Attendance × 0.35)
 ## License
 
 This project is open-source under the [MIT License](LICENSE).
-
----
-
-Built with [Lovable](https://lovable.dev)
