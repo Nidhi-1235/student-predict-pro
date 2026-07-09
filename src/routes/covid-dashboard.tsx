@@ -7,10 +7,9 @@ import {
   Skull,
   Stethoscope,
   Users,
-  Virus,
 } from "lucide-react";
 import { MobileShell, PageHeader } from "@/components/MobileShell";
-import { getCovidGlobalSummary, type CovidGlobalSummary } from "@/lib/covid.functions";
+import { getCovidGlobalSummary } from "@/lib/covid.functions";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
