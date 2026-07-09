@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as CovidDashboardRouteImport } from './routes/covid-dashboard'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedStudentsRouteImport } from './routes/_authenticated/students'
@@ -22,6 +23,11 @@ import { Route as AuthenticatedAddStudentRouteImport } from './routes/_authentic
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CovidDashboardRoute = CovidDashboardRouteImport.update({
+  id: '/covid-dashboard',
+  path: '/covid-dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
@@ -66,6 +72,7 @@ const AuthenticatedAddStudentRoute = AuthenticatedAddStudentRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/covid-dashboard': typeof CovidDashboardRoute
   '/login': typeof LoginRoute
   '/add-student': typeof AuthenticatedAddStudentRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
@@ -76,6 +83,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/covid-dashboard': typeof CovidDashboardRoute
   '/login': typeof LoginRoute
   '/add-student': typeof AuthenticatedAddStudentRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/covid-dashboard': typeof CovidDashboardRoute
   '/login': typeof LoginRoute
   '/_authenticated/add-student': typeof AuthenticatedAddStudentRoute
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/covid-dashboard'
     | '/login'
     | '/add-student'
     | '/analytics'
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/covid-dashboard'
     | '/login'
     | '/add-student'
     | '/analytics'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/covid-dashboard'
     | '/login'
     | '/_authenticated/add-student'
     | '/_authenticated/analytics'
@@ -133,6 +145,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  CovidDashboardRoute: typeof CovidDashboardRoute
   LoginRoute: typeof LoginRoute
 }
 
@@ -143,6 +156,13 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/covid-dashboard': {
+      id: '/covid-dashboard'
+      path: '/covid-dashboard'
+      fullPath: '/covid-dashboard'
+      preLoaderRoute: typeof CovidDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -228,6 +248,7 @@ const AuthenticatedRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  CovidDashboardRoute: CovidDashboardRoute,
   LoginRoute: LoginRoute,
 }
 export const routeTree = rootRouteImport
